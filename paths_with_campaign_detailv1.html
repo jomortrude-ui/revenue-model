@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>All Paths to $1.4M — Campaign Detail</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+:root {
+  --bg:#0b0b0b;--surface:#141414;--surface2:#1c1c1c;--border:#242424;--border2:#1a1a1a;
+  --text:#e0e0e0;--text2:#999;--muted:#484848;--muted2:#666;
+  --mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;
+  --elite:#4ade80;--excellent:#60a5fa;--healthy:#34d399;--acceptable:#fbbf24;--aggressive:#f97316;--costly:#f87171;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13px;line-height:1.5;padding:40px 44px;max-width:1140px;margin:0 auto;}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2);margin-bottom:6px;}
+h1{font-family:var(--mono);font-size:24px;font-weight:700;letter-spacing:-.02em;margin-bottom:4px;}
+.subtitle{font-family:var(--mono);font-size:11px;color:var(--muted2);margin-bottom:8px;}
+.note-box{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--acceptable);padding:14px 18px;margin-bottom:32px;font-size:12px;color:var(--text2);line-height:1.7;}
+.note-box strong{color:var(--text);}
+
+/* SECTION LABELS */
+.sl{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:10px;margin-top:36px;}
+
+/* COL HEADERS */
+.col-headers{display:grid;grid-template-columns:240px 70px 80px 80px 70px 90px 100px 100px;gap:0;padding:0 14px 6px 17px;margin-top:4px;}
+.col-h{font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:right;}
+.col-h:first-child{text-align:left;}
+
+/* BAND HEADER */
+.band-header{display:flex;align-items:center;gap:12px;padding:9px 16px;margin-bottom:2px;border:1px solid var(--border);background:var(--surface2);}
+.band-title{font-family:var(--mono);font-size:13px;font-weight:700;}
+.band-range{font-family:var(--mono);font-size:10px;color:var(--muted2);}
+.band-pill{font-family:var(--mono);font-size:8px;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:2px;font-weight:700;margin-left:auto;}
+
+/* SCENARIO ROW */
+.scenario-wrap{margin-bottom:2px;}
+.scenario{display:grid;grid-template-columns:240px 70px 80px 80px 70px 90px 100px 100px;align-items:center;gap:0;background:var(--surface);border:1px solid var(--border);border-left:3px solid transparent;padding:10px 14px;cursor:pointer;transition:background .1s;user-select:none;}
+.scenario:hover{background:rgba(255,255,255,.025);}
+.scenario.open{border-bottom:none;}
+.sc-name{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--text);}
+.sc-sub{font-family:var(--mono);font-size:9px;color:var(--muted2);margin-top:2px;}
+.sc-cell{font-family:var(--mono);font-size:11px;text-align:right;color:var(--text2);}
+.sc-cell.key{font-weight:700;}
+.mktg-cell{text-align:right;font-family:var(--mono);font-size:14px;font-weight:700;}
+.expand-arrow{font-size:10px;color:var(--muted2);transition:transform .2s;}
+.scenario.open .expand-arrow{transform:rotate(90deg);}
+
+/* CHANGE TAGS */
+.changes{display:flex;flex-wrap:wrap;gap:3px;margin-top:3px;}
+.ct{font-family:var(--mono);font-size:7px;padding:1px 4px;border-radius:2px;border:1px solid;}
+.ct-close{border-color:rgba(96,165,250,.3);color:#60a5fa;}
+.ct-ticket{border-color:rgba(74,222,128,.3);color:#4ade80;}
+.ct-cpl{border-color:rgba(251,191,36,.3);color:#fbbf24;}
+.ct-bad{border-color:rgba(248,113,113,.3);color:#f87171;}
+
+/* DROPDOWN DETAIL */
+.detail{background:#0f0f0f;border:1px solid var(--border);border-top:none;border-left:3px solid transparent;padding:0;overflow:hidden;max-height:0;transition:max-height .3s ease;}
+.detail.open{max-height:2000px;}
+
+.detail-inner{padding:16px 18px;}
+
+.detail-section-title{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);border-bottom:1px solid var(--border);padding-bottom:6px;margin-bottom:8px;margin-top:16px;}
+.detail-section-title:first-child{margin-top:0;}
+
+/* CAMPAIGN TABLE INSIDE DETAIL */
+table.camp{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:10px;}
+table.camp th{font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);text-align:right;padding:5px 10px;border-bottom:1px solid var(--border);background:var(--surface);white-space:nowrap;}
+table.camp th:first-child{text-align:left;}
+table.camp td{padding:7px 10px;text-align:right;border-bottom:1px solid var(--border2);color:var(--text2);}
+table.camp td:first-child{text-align:left;color:var(--text);font-weight:500;}
+table.camp tr.subtotal td{border-top:1px solid var(--border);font-weight:700;color:var(--text);background:var(--surface);}
+table.camp tr.organic-row td{color:#777;font-style:italic;}
+table.camp tr.grand td{border-top:1px solid var(--border);font-weight:700;background:var(--surface2);}
+table.camp tr:hover td{background:rgba(255,255,255,.01);}
+
+/* JOB MIX DETAIL */
+.mix-row{display:flex;gap:16px;margin-bottom:10px;}
+.mix-card{background:var(--surface);border:1px solid var(--border);padding:10px 14px;flex:1;border-radius:2px;}
+.mix-card-label{font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);margin-bottom:4px;}
+.mix-card-value{font-family:var(--mono);font-size:15px;font-weight:700;}
+.mix-card-sub{font-family:var(--mono);font-size:9px;color:var(--muted2);margin-top:2px;}
+
+/* COLORS */
+.c-elite{color:var(--elite);} .c-excellent{color:var(--excellent);} .c-healthy{color:var(--healthy);}
+.c-acceptable{color:var(--acceptable);} .c-aggressive{color:var(--aggressive);} .c-costly{color:var(--costly);}
+.c-muted{color:var(--muted2);}
+.b-elite{border-left-color:var(--elite)!important;} .b-excellent{border-left-color:var(--excellent)!important;}
+.b-healthy{border-left-color:var(--healthy)!important;} .b-acceptable{border-left-color:var(--acceptable)!important;}
+.b-aggressive{border-left-color:var(--aggressive)!important;} .b-costly{border-left-color:var(--costly)!important;}
+.bg-elite{background:rgba(74,222,128,.04)!important;} .bg-excellent{background:rgba(96,165,250,.04)!important;}
+.bg-healthy{background:rgba(52,211,153,.04)!important;} .bg-acceptable{background:rgba(251,191,36,.04)!important;}
+.bg-aggressive{background:rgba(249,115,22,.04)!important;} .bg-costly{background:rgba(248,113,113,.04)!important;}
+
+.roi-pos{color:#4ade80;} .roi-neg{color:#f87171;} .roi-marg{color:#fbbf24;} .roi-na{color:var(--muted2);}
+.tag{display:inline-block;font-family:var(--mono);font-size:7px;padding:1px 4px;border-radius:2px;margin-left:3px;font-weight:700;}
+.tag-lsa{background:rgba(96,165,250,.12);color:#60a5fa;}
+.tag-fixed{background:rgba(102,102,102,.12);color:var(--muted2);}
+.tag-organic{background:rgba(74,222,128,.12);color:#4ade80;}
+.tag-sms{background:rgba(251,191,36,.12);color:#fbbf24;}
+
+/* FIXED INPUTS */
+.fixed-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:28px;}
+.fixed-item{background:var(--bg);padding:12px 16px;}
+.fi-label{font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);margin-bottom:4px;}
+.fi-value{font-family:var(--mono);font-size:13px;font-weight:600;}
+.fi-sub{font-family:var(--mono);font-size:9px;color:var(--muted2);margin-top:2px;}
+</style>
+</head>
+<body>
+
+<div class="eyebrow">$1,400,000 Monthly Target · Corrected Job Mix</div>
+<h1>Every Path to $1.4M — Campaign Detail</h1>
+<div class="subtitle">Click any scenario to expand full campaign breakdown · 18 scenarios across 6 efficiency bands</div>
+
+<div class="note-box">
+  <strong>Job mix correction applied:</strong> Overall company mix is 13% replacement / 87% maintenance. But Google Ads self-selects for replacement-intent searchers — back-solved from April actuals, Google's true mix is ~37% replacement / 63% maintenance. This is why Google's April RPL was $1,022, not the blended company RPL of $517. Each channel uses its own mix based on intent profile. GLSA HVAC leads are ~65% replacement intent. Thumbtack ~10%. Legacy Phone/organic ~9%.
+</div>
+
+<div class="sl">Fixed Assumptions</div>
+<div class="fixed-row">
+  <div class="fixed-item"><div class="fi-label">Organic Base</div><div class="fi-value">$560k</div><div class="fi-sub">Legacy + GBP + email + dialer + referrals</div></div>
+  <div class="fixed-item"><div class="fi-label">Replace Close (overall co.)</div><div class="fi-value c-costly">20% baseline</div><div class="fi-sub">Varies by scenario above</div></div>
+  <div class="fixed-item"><div class="fi-label">Maintenance Close</div><div class="fi-value">52%</div><div class="fi-sub">Implied from 48% blended overall</div></div>
+  <div class="fixed-item"><div class="fi-label">Avg Replacement Ticket</div><div class="fi-value">$11,800 baseline</div><div class="fi-sub">Varies by scenario above</div></div>
+</div>
+
+<div id="app"></div>
+
+<script>
+const DATA = [{"id":"e1","band":"elite","name":"Best Case \u2014 Everything Firing","r_close":0.35,"r_ticket":15000,"cpl":600,"paid_campaigns":{"Google Ads":{"spend":187000,"leads":312,"revenue":647792,"jobs":143,"opps":115,"cpl":600,"cpo":1626,"cpj":1308,"roi":246.4,"arpl":2076,"arpo":5633,"replace_closed":40,"maint_closed":103},"GLSA HVAC":{"spend":1500,"leads":35,"revenue":166300,"jobs":23,"opps":23,"cpl":43,"cpo":65,"cpj":65,"roi":10986.7,"arpl":4751,"arpo":7230,"replace_closed":13,"maint_closed":10},"GLSA Plumbing":{"spend":4000,"leads":47,"revenue":19160,"jobs":27,"opps":9,"cpl":86,"cpo":444,"cpj":148,"roi":379.0,"arpl":408,"arpo":2129,"replace_closed":4,"maint_closed":23},"Thumbtack":{"spend":28000,"leads":54,"revenue":39080,"jobs":48,"opps":5,"cpl":516,"cpo":5600,"cpj":583,"roi":39.6,"arpl":724,"arpo":7816,"replace_closed":1,"maint_closed":47},"Microsoft Ads":{"spend":5000,"leads":5,"revenue":800,"jobs":2,"opps":2,"cpl":950,"cpo":2500,"cpj":2500,"roi":-84.0,"arpl":160,"arpo":400,"replace_closed":0,"maint_closed":2},"Chiirp":{"spend":2000,"leads":61,"revenue":8000,"jobs":37,"opps":5,"cpl":33,"cpo":400,"cpj":54,"roi":300.0,"arpl":131,"arpo":1600,"replace_closed":5,"maint_closed":32},"Events":{"spend":3000,"leads":11,"revenue":3800,"jobs":11,"opps":3,"cpl":273,"cpo":1000,"cpj":273,"roi":26.7,"arpl":345,"arpo":1267,"replace_closed":3,"maint_closed":8},"PPC Management":{"spend":7340,"leads":0,"revenue":0,"jobs":0,"opps":0,"cpl":0,"cpo":0,"cpj":0,"roi":-100,"arpl":0,"arpo":0,"replace_closed":0,"maint_closed":0}},"organic_channels":{"Legacy Phone / Repeat":{"revenue":315000,"leads":520,"jobs":440,"opps":47,"spend":0},"GBP / Organic Search":{"revenue":70000,"leads":130,"jobs":112,"opps":12,"spend":0},"Email / SMS":{"revenue":35000,"leads":65,"jobs":56,"opps":6,"spend":0},"Power Dialer":{"revenue":60000,"leads":185,"jobs":165,"opps":11,"spend":0},"Referral Program":{"revenue":40000,"leads":45,"jobs":40,"opps":5,"spend":0},"Manager / Elite":{"revenue":40000,"leads":75,"jobs":65,"opps":7,"spend":0}},"totals":{"paid_spend":237840,"paid_revenue":884932,"organic_revenue":560000,"total_revenue":1444932,"mktg_pct":16.5,"total_leads":1545,"total_jobs":1169,"total_opps":250,"gap":-44932}},{"id":"e2","band":"elite","name":"High Ticket + Strong Close","r_close":0.3,"r_ticket":18000,"cpl":700,"paid_campaigns":{"Google Ads":{"spend":232000,"leads":331,"revenue":716576,"jobs":146,"opps":122,"cpl":700,"cpo":1902,"cpj":1589,"roi":208.9,"arpl":2165,"arpo":5874,"replace_closed":37,"maint_closed":109},"GLSA HVAC":{"spend":1500,"leads":35,"revenue":166300,"jobs":23,"opps":23,"cpl":43,"cpo":65,"cpj":65,"roi":10986.7,"arpl":4751,"arpo":7230,"replace_closed":13,"maint_closed":10},"GLSA Plumbing":{"spend":4000,"leads":47,"revenue":19160,"jobs":27,"opps":9,"cpl":86,"cpo":444,"cpj":148,"roi":379.0,"arpl":408,"arpo":2129,"replace_closed":4,"maint_closed":23},"Thumbtack":{"spend":28000,"leads":54,"revenue":39080,"jobs":48,"opps":5,"cpl":516,"cpo":5600,"cpj":583,"roi":39.6,"arpl":724,"arpo":7816,"replace_closed":1,"maint_closed":47},"Microsoft Ads":{"spend":5000,"leads":5,"revenue":800,"jobs":2,"opps":2,"cpl":950,"cpo":2500,"cpj":2500,"roi":-84.0,"arpl":160,"arpo":400,"replace_closed":0,"maint_closed":2},"Chiirp":{"spend":2000,"leads":61,"revenue":8000,"jobs":37,"opps":5,"cpl":33,"cpo":400,"cpj":54,"roi":300.0,"arpl":131,"arpo":1600,"replace_closed":5,"maint_closed":32},"Events":{"spend":3000,"leads":11,"revenue":3800,"jobs":11,"opps":3,"cpl":273,"cpo":1000,"cpj":273,"roi":26.7,"arpl":345,"arpo":1267,"replace_closed":3,"maint_closed":8},"PPC Management":{"spend":7340,"leads":0,"revenue":0,"jobs":0,"opps":0,"cpl":0,"cpo":0,"cpj":0,"roi":-100,"arpl":0,"arpo":0,"replace_closed":0,"maint_closed":0}},"organic_channels":{"Legacy Phone / Repeat":{"revenue":315000,"leads":520,"jobs":440,"opps":47,"spend":0},"GBP / Organic Search":{"revenue":70000,"leads":130,"jobs":112,"opps":12,"spend":0},"Email / SMS":{"revenue":35000,"leads":65,"jobs":56,"opps":6,"spend":0},"Power Dialer":{"revenue":60000,"leads":185,"jobs":165,"opps":11,"spend":0},"Referral Program":{"revenue":40000,"leads":45,"jobs":40,"opps":5,"spend":0},"Manager / Elite":{"revenue":40000,"leads":75,"jobs":65,"opps":7,"spend":0}},"totals":{"paid_spend":282840,"paid_revenue":953716,"organic_revenue":560000,"total_revenue":1513716,"mktg_pct":18.7,"total_leads":1564,"total_jobs":1172,"total_opps":257,"gap":-113716}},{"id":"e3","band":"elite","name":"Premium Close + In-House CPL","r_close":0.3,"r_ticket":15000,"cpl":700,"paid_campaigns":{"Google Ads":{"spend":251000,"leads":359,"revenue":654752,"jobs":158,"opps":133,"cpl":700,"cpo":1887,"cpj":1589,"roi":160.9,"arpl":1824,"arpo":4923,"replace_closed":40,"maint_closed":118},"GLSA HVAC":{"spend":1500,"leads":35,"revenue":166300,"jobs":23,"opps":23,"cpl":43,"cpo":65,"cpj":65,"roi":10986.7,"arpl":4751,"arpo":7230,"replace_closed":13,"maint_closed":10},"GLSA Plumbing":{"spend":4000,"leads":47,"revenue":19160,"jobs":27,"opps":9,"cpl":86,"cpo":444,"cpj":148,"roi":379.0,"arpl":408,"arpo":2129,"replace_closed":4,"maint_closed":23},"Thumbtack":{"spend":28000,"leads":54,"revenue":39080,"jobs":48,"opps":5,"cpl":516,"cpo":5600,"cpj":583,"roi":39.6,"arpl":724,"arpo":7816,"replace_closed":1,"maint_closed":47},"Microsoft Ads":{"spend":5000,"leads":5,"revenue":800,"jobs":2,"opps":2,"cpl":950,"cpo":2500,"cpj":2500,"roi":-84.0,"arpl":160,"arpo":400,"replace_closed":0,"maint_closed":2},"Chiirp":{"spend":2000,"leads":61,"revenue":8000,"jobs":37,"opps":5,"cpl":33,"cpo":400,"cpj":54,"roi":300.0,"arpl":131,"arpo":1600,"replace_closed":5,"maint_closed":32},"Events":{"spend":3000,"leads":11,"revenue":3800,"jobs":11,"opps":3,"cpl":273,"cpo":1000,"cpj":273,"roi":26.7,"arpl":345,"arpo":1267,"replace_closed":3,"maint_closed":8},"PPC Management":{"spend":7340,"leads":0,"revenue":0,"jobs":0,"opps":0,"cpl":0,"cpo":0,"cpj":0,"roi":-100,"arpl":0,"arpo":0,"replace_closed":0,"maint_closed":0}},"organic_channels":{"Legacy Phone / Repeat":{"revenue":315000,"leads":520,"jobs":440,"opps":47,"spend":0},"GBP / Organic Search":{"revenue":70000,"leads":130,"jobs":112,"opps":12,"spend":0},"Email / SMS":{"revenue":35000,"leads":65,"jobs":56,"opps":6,"spend":0},"Power Dialer":{"revenue":60000,"leads":185,"jobs":165,"opps":11,"spend":0},"Referral Program":{"revenue":40000,"leads":45,"jobs":40,"opps":5,"spend":0},"Manager / Elite":{"revenue":40000,"leads":75,"jobs":65,"opps":7,"spend":0}},"totals":{"paid_spend":301840,"paid_revenue":891892,"organic_revenue":560000,"total_revenue":1451892,"mktg_pct":20.8,"total_leads":1592,"total_jobs":1184,"total_opps":268,"gap":-51892}},{"id":"x1","band":"excellent","name":"Close Fix + In-House PPC","r_close":0.25,"r_ticket":12000,"cpl":700,"paid_campaigns":{"Google Ads":{"spend":394000,"leads":563,"revenue":709840,"jobs":237,"opps":208,"cpl":700,"cpo":1894,"cpj":1662,"roi":80.2,"arpl":1261,"arpo":3413,"replace_closed":52,"maint_closed":185},"GLSA HVAC":{"spend":1500,"leads":35,"revenue":166300,"jobs":23,"opps":23,"cpl":43,"cpo":65,"cpj":65,"roi":10986.7,"arpl":4751,"arpo":7230,"replace_closed":13,"maint_closed":10},"GLSA Plumbing":{"spend":4000,"leads":47,"revenue":19160,"jobs":27,"opps":9,"cpl":86,"cpo":444,"cpj":148,"roi":379.0,"arpl":408,"arpo":2129,"replace_closed":4,"maint_closed":23},"Thumbtack":{"spend":28000,"leads":54,"revenue":39080,"jobs":48,"opps":5,"cpl":516,"cpo":5600,"cpj":583,"roi":39.6,"arpl":724,"arpo":7816,"replace_closed":1,"maint_closed":47},"Microsoft Ads":{"spend":5000,"leads":5,"revenue":800,"jobs":2,"opps":2,"cpl":950,"cpo":2500,"cpj":2500,"roi":-84.0,"arpl":160,"arpo":400,"replace_closed":0,"maint_closed":2},"Chiirp":{"spend":2000,"leads":61,"revenue":8000,"jobs":37,"opps":5,"cpl":33,"cpo":400,"cpj":54,"roi":300.0,"arpl":131,"arpo":1600,"replace_closed":5,"maint_closed":32},"Events":{"spend":3000,"leads":11,"revenue":3800,"jobs":11,"opps":3,"cpl":273,"cpo":1000,"cpj":273,"roi":26.7,"arpl":345,"arpo":1267,"replace_closed":3,"maint_closed":8},"PPC Management":{"spend":7340,"leads":0,"revenue":0,"jobs":0,"opps":0,"cpl":0,"cpo":0,"cpj":0,"roi":-100,"arpl":0,"arpo":0,"replace_closed":0,"maint_closed":0}},"organic_channels":{"Legacy Phone / Repeat":{"revenue":315000,"leads":520,"jobs":440,"opps":47,"spend":0},"GBP / Organic Search":{"revenue":70000,"leads":130,"jobs":112,"opps":12,"spend":0},"Email / SMS":{"revenue":35000,"leads":65,"jobs":56,"opps":6,"spend":0},"Power Dialer":{"revenue":60000,"leads":185,"jobs":165,"opps":11,"spend":0},"Referral Program":{"revenue":40000,"leads":45,"jobs":40,"opps":5,"spend":0},"Manager / Elite":{"revenue":40000,"leads":75,"jobs":65,"opps":7,"spend":0}},"totals":{"paid_spend":444840,"paid_revenue":946980,"organic_revenue":560000,"total_revenue":1506980,"mktg_pct":29.5,"total_leads":1796,"total_jobs":1263,"total_opps":343,"gap":-106980}},{"id":"x2","band":"excellent","name":"Close Fix + Higher Ticket","r_close":0.25,"r_ticket":15000,"cpl":700,"paid_campaigns":{"Google Ads":{"spend":323000,"leads":461,"revenue":715064,"jobs":194,"opps":171,"cpl":700,"cpo":1889,"cpj":1665,"roi":121.4,"arpl":1551,"arpo":4182,"replace_closed":43,"maint_closed":151},"GLSA HVAC":{"spend":1500,"leads":35,"revenue":166300,"jobs":23,"opps":23,"cpl":43,"cpo":65,"cpj":65,"roi":10986.7,"arpl":4751,"arpo":7230,"replace_closed":13,"maint_closed":10},"GLSA Plumbing":{"spend":4000,"leads":47,"revenue":19160,"jobs":27,"opps":9,"cpl":86,"cpo":444,"cpj":148,"roi":379.0,"arpl":408,"arpo":2129,"replace_closed":4,"maint_closed":23},"Thumbtack":{"spend":28000,"leads":54,"revenue":39080,"jobs":48,"opps":5,"cpl":516,"cpo":5600,"cpj":583,"roi":39.6,"arpl":724,"arpo":7816,"replace_closed":1,"maint_closed":47},"Microsoft Ads":{"spend":5000,"leads":5,"revenue":800,"jobs":2,"opps":2,"cpl":950,"cpo":2500,"cpj":2500,"roi":-84.0,"arpl":160,"arpo":400,"replace_closed":0,"maint_closed":2},"Chiirp":{"spend":2000,"leads":61,"revenue":8000,"jobs":37,"opps":5,"cpl":33,"cpo":400,"cpj":54,"roi":300.0,"arpl":131,"arpo":1600,"replace_closed":5,"maint_closed":32},"Events":{"spend":3000,"leads":11,"revenue":3800,"jobs":11,"opps":3,"cpl":273,"cpo":1000,"cpj":273,"roi":26.7,"arpl":345,"arpo":1267,"replace_closed":3,"maint_closed":8},"PPC Management":{"spend":7340,"leads":0,"revenue":0,"jobs":0,"opps":0,"cpl":0,"cpo":0,"cpj":0,"roi":-100,"arpl":0,"arpo":0,"replace_closed":0,"maint_closed":0}},"organic_channels":{"Legacy Phone / Repeat":{"revenue":315000,"leads":520,"jobs":440,"opps":47,"spend":0},"GBP / Organic Search":{"revenue":70000,"leads":130,"jobs":112,"opps":12,"spend":0},"Email / SMS":{"revenue":35000,"leads":65,"jobs":56,"opps":6,"spend":0},"Power Dialer":{"revenue":60000,"leads":185,"jobs":165,"opps":11,"spend":0},"Referral Program":{"revenue":40000,"leads":45,"jobs":40,"opps":5,"spend":0},"Manager / Elite":{"revenue":40000,"leads":75,"jobs":65,"opps":7,"spend":0}},"totals":{"paid_spend":373840,"paid_revenue":952204,"organic_revenue":560000,"total_revenue":1512204,"mktg_pct":24.7,"total_leads":1694,"total_jobs":1220,"total_opps":306,"gap":-112204}},{"id":"x3","band":"excellent","name":"Close Fix + Cheap Leads","r_close":0.25,"r_ticket":12000,"cpl":600,"paid_campaigns":{"Google Ads":{"spend":338000,"leads":563,"revenue":709840,"jobs":237,"opps":208,"cpl":600,"cpo":1625,"cpj":1426,"roi":110.0,"arpl":1261,"arpo":3413,"replace_closed":52,"maint_closed":185},"GLSA HVAC":{"spend":1500,"leads":35,"revenue":166300,"jobs":23,"opps":23,"cpl":43,"cpo":65,"cpj":65,"roi":10986.7,"arpl":4751,"arpo":7230,"replace_closed":13,"maint_closed":10},"GLSA Plumbing":{"spend":4000,"leads":47,"revenue":19160,"jobs":27,"opps":9,"cpl":86,"cpo":444,"cpj":148,"roi":379.0,"arpl":408,"arpo":2129,"replace_closed":4,"maint_closed":23},"Thumbtack":{"spend":28000,"leads":54,"revenue":39080,"jobs":48,"opps":5,"cpl":516,"cpo":5600,"cpj":583,"roi":39.6,"arpl":724,"arpo":7816,"replace_closed":1,"maint_closed":47},"Microsoft Ads":{"spend":5000,"leads":5,"revenue":800,"jobs":2,"opps":2,"cpl":950,"cpo":2500,"cpj":2500,"roi":-84.0,"arpl":160,"arpo":400,"replace_closed":0,"maint_closed":2},"Chiirp":{"spend":2000,"leads":61,"revenue":8000,"jobs":37,"opps":5,"cpl":33,"cpo":400,"cpj":54,"roi":300.0,"arpl":131,"arpo":1600,"replace_closed":5,"maint_closed":32},"Events":{"spend":3000,"leads":11,"revenue":3800,"jobs":11,"opps":3,"cpl":273,"cpo":1000,"cpj":273,"roi":26.7,"arpl":345,"arpo":1267,"replace_closed":3,"maint_closed":8},"PPC Management":{"spend":7340,"leads":0,"revenue":0,"jobs":0,"opps":0,"cpl":0,"cpo":0,"cpj":0,"roi":-100,"arpl":0,"arpo":0,"replace_closed":0,"maint_closed":0}},"organic_channels":{"Legacy Phone / Repeat":{"revenue":315000,"leads":520,"jobs":440,"opps":47,"spend":0},"GBP / Organic Search":{"revenue":70000,"leads":130,"jobs":112,"opps":12,"spend":0},"Email / SMS":{"revenue":35000,"leads":65,"jobs":56,"opps":6,"spend":0},"Power Dialer":{"revenue":60000,"leads":185,"jobs":165,"opps":11,"spend":0},"Referral Program":{"revenue":40000,"leads":45,"jobs":40,"opps":5,"spend":0},"Manager / Elite":{"revenue":40000,"leads":75,"jobs":65,"opps":7,"spend":0}},"totals":{"paid_spend":388840,"paid_revenue":946980,"organic_revenue":560000,"total_revenue":1506980,"mktg_pct":25.8,"total_leads":1796,"total_jobs":1263,"total_opps":343,"gap":-106980}},{"id":"h1","band":"healthy","name":"Current Close + Good CPL","r_close":0.2,"r_ticket":12000,"cpl":700,"paid_campaigns":{"Google Ads":{"spend":476000,"leads":680,"revenue":703472,"jobs":273,"opps":252,"cpl":700,"cpo":1889,"cpj":1744,"roi":47.8,"arpl":1035,"arpo":2792,"replace_closed":50,"maint_closed":223},"GLSA HVAC":{"spend":1500,"leads":35,"revenue":166300,"jobs":23,"opps":23,"cpl":43,"cpo":65,"cpj":65,"roi":10986.7,"arpl":4751,"arpo":7230,"replace_closed":13,"maint_closed":10},"GLSA Plumbing":{"spend":4000,"leads":47,"revenue":19160,"jobs":27,"opps":9,"cpl":86,"cpo":444,"cpj":148,"roi":379.0,"arpl":408,"arpo":2129,"replace_closed":4,"maint_closed":23},"Thumbtack":{"spend":28000,"leads":54,"revenue":39080,"jobs":48,"opps":5,"cpl":516,"cpo":5600,"cpj":583,"roi":39.6,"arpl":724,"arpo":7816,"replace_closed":1,"maint_closed":47},"Microsoft Ads":{"spend":5000,"leads":5,"revenue":800,"jobs":2,"opps":2,"cpl":950,"cpo":2500,"cpj":2500,"roi":-84.0,"arpl":160,"arpo":400,"replace_closed":0,"maint_closed":2},"Chiirp":{"spend":2000,"leads":61,"revenue":8000,"jobs":37,"opps":5,"cpl":33,"cpo":400,"cpj":54,"roi":300.0,"arpl":131,"arpo":1600,"replace_closed":5,"maint_closed":32},"Events":{"spend":3000,"leads":11,"revenue":3800,"jobs":11,"opps":3,"cpl":273,"cpo":1000,"cpj":273,"roi":26.7,"arpl":345,"arpo":1267,"replace_closed":3,"maint_closed":8},"PPC Management":{"spend":7340,"leads":0,"revenue":0,"jobs":0,"opps":0,"cpl":0,"cpo":0,"cpj":0,"roi":-100,"arpl":0,"arpo":0,"replace_closed":0,"maint_closed":0}},"organic_channels":{"Legacy Phone / Repeat":{"revenue":315000,"leads":520,"jobs":440,"opps":47,"spend":0},"GBP / Organic Search":{"revenue":70000,"leads":130,"jobs":112,"opps":12,"spend":0},"Email / SMS":{"revenue":35000,"leads":65,"jobs":56,"opps":6,"spend":0},"Power Dialer":{"revenue":60000,"leads":185,"jobs":165,"opps":11,"spend":0},"Referral Program":{"revenue":40000,"leads":45,"jobs":40,"opps":5,"spend":0},"Manager / Elite":{"revenue":40000,"leads":75,"jobs":65,"opps":7,"spend":0}},"totals":{"paid_spend":526840,"paid_revenue":940612,"organic_revenue":560000,"total_revenue":1500612,"mktg_pct":35.1,"total_leads":1913,"total_jobs":1299,"total_opps":387,"gap":-100612}},{"id":"h2","band":"healthy","name":"Slight Close Bump to 22%","r_close":0.22,"r_ticket":12000,"cpl":700,"paid_campaigns":{"Google Ads":{"spend":439000,"leads":627,"revenue":707584,"jobs":257,"opps":232,"cpl":700,"cpo":1892,"cpj":1708,"roi":61.2,"arpl":1129,"arpo":3050,"replace_closed":51,"maint_closed":206},"GLSA HVAC":{"spend":1500,"leads":35,"revenue":166300,"jobs":23,"opps":23,"cpl":43,"cpo":65,"cpj":65,"roi":10986.7,"arpl":4751,"arpo":7230,"replace_closed":13,"maint_closed":10},"GLSA Plumbing":{"spend":4000,"leads":47,"revenue":19160,"jobs":27,"opps":9,"cpl":86,"cpo":444,"cpj":148,"roi":379.0,"arpl":408,"arpo":2129,"replace_closed":4,"maint_closed":23},"Thumbtack":{"spend":28000,"leads":54,"revenue":39080,"jobs":48,"opps":5,"cpl":516,"cpo":5600,"cpj":583,"roi":39.6,"arpl":724,"arpo":7816,"replace_closed":1,"maint_closed":47},"Microsoft Ads":{"spend":5000,"leads":5,"revenue":800,"jobs":2,"opps":2,"cpl":950,"cpo":2500,"cpj":2500,"roi":-84.0,"arpl":160,"arpo":400,"replace_closed":0,"maint_closed":2},"Chiirp":{"spend":2000,"leads":61,"revenue":8000,"jobs":37,"opps":5,"cpl":33,"cpo":400,"cpj":54,"roi":300.0,"arpl":131,"arpo":1600,"replace_closed":5,"maint_closed":32},"Events":{"spend":3000,"leads":11,"revenue":3800,"jobs":11,"opps":3,"cpl":273,"cpo":1000,"cpj":273,"roi":26.7,"arpl":345,"arpo":1267,"replace_closed":3,"maint_closed":8},"PPC Management":{"spend":7340,"leads":0,"revenue":0,"jobs":0,"opps":0,"cpl":0,"cpo":0,"cpj":0,"roi":-100,"arpl":0,"arpo":0,"replace_closed":0,"maint_closed":0}},"organic_channels":{"Legacy Phone / Repeat":{"revenue":315000,"leads":520,"jobs":440,"opps":47,"spend":0},"GBP / Organic Search":{"revenue":70000,"leads":130,"jobs":112,"opps":12,"spend":0},"Email / SMS":{"revenue":35000,"leads":65,"jobs":56,"opps":6,"spend":0},"Power Dialer":{"revenue":60000,"leads":185,"jobs":165,"opps":11,"spend":0},"Referral Program":{"revenue":40000,"leads":45,"jobs":40,"opps":5,"spend":0},"Manager / Elite":{"revenue":40000,"leads":75,"jobs":65,"opps":7,"spend":0}},"totals":{"paid_spend":489840,"paid_revenue":944724,"organic_revenue":560000,"total_revenue":1504724,"mktg_pct":32.6,"total_leads":1860,"total_jobs":1283,"total_opps":367,"gap":-104724}},{"id":"h3","band":"healthy","name":"Higher Avg Ticket ($15k)","r_close":0.2,"r_ticket":15000,"cpl":700,"paid_campaigns":{"Google Ads":{"spend":388000,"leads":554,"revenue":699448,"jobs":223,"opps":205,"cpl":700,"cpo":1893,"cpj":1740,"roi":80.3,"arpl":1263,"arpo":3412,"replace_closed":41,"maint_closed":182},"GLSA HVAC":{"spend":1500,"leads":35,"revenue":166300,"jobs":23,"opps":23,"cpl":43,"cpo":65,"cpj":65,"roi":10986.7,"arpl":4751,"arpo":7230,"replace_closed":13,"maint_closed":10},"GLSA Plumbing":{"spend":4000,"leads":47,"revenue":19160,"jobs":27,"opps":9,"cpl":86,"cpo":444,"cpj":148,"roi":379.0,"arpl":408,"arpo":2129,"replace_closed":4,"maint_closed":23},"Thumbtack":{"spend":28000,"leads":54,"revenue":39080,"jobs":48,"opps":5,"cpl":516,"cpo":5600,"cpj":583,"roi":39.6,"arpl":724,"arpo":7816,"replace_closed":1,"maint_closed":47},"Microsoft Ads":{"spend":5000,"leads":5,"revenue":800,"jobs":2,"opps":2,"cpl":950,"cpo":2500,"cpj":2500,"roi":-84.0,"arpl":160,"arpo":400,"replace_closed":0,"maint_closed":2},"Chiirp":{"spend":2000,"leads":61,"revenue":8000,"jobs":37,"opps":5,"cpl":33,"cpo":400,"cpj":54,"roi":300.0,"arpl":131,"arpo":1600,"replace_closed":5,"maint_closed":32},"Events":{"spend":3000,"leads":11,"revenue":3800,"jobs":11,"opps":3,"cpl":273,"cpo":1000,"cpj":273,"roi":26.7,"arpl":345,"arpo":1267,"replace_closed":3,"maint_closed":8},"PPC Management":{"spend":7340,"leads":0,"revenue":0,"jobs":0,"opps":0,"cpl":0,"cpo":0,"cpj":0,"roi":-100,"arpl":0,"arpo":0,"replace_closed":0,"maint_closed":0}},"organic_channels":{"Legacy Phone / Repeat":{"revenue":315000,"leads":520,"jobs":440,"opps":47,"spend":0},"GBP / Organic Search":{"revenue":70000,"leads":130,"jobs":112,"opps":12,"spend":0},"Email / SMS":{"revenue":35000,"leads":65,"jobs":56,"opps":6,"spend":0},"Power Dialer":{"revenue":60000,"leads":185,"jobs":165,"opps":11,"spend":0},"Referral Program":{"revenue":40000,"leads":45,"jobs":40,"opps":5,"spend":0},"Manager / Elite":{"revenue":40000,"leads":75,"jobs":65,"opps":7,"spend":0}},"totals":{"paid_spend":438840,"paid_revenue":936588,"organic_revenue":560000,"total_revenue":1496588,"mktg_pct":29.3,"total_leads":1787,"total_jobs":1249,"total_opps":340,"gap":-96588}},{"id":"a1","band":"acceptable","name":"Current State (April Baseline)","r_close":0.2,"r_ticket":12000,"cpl":732,"paid_campaigns":{"Google Ads":{"spend":503000,"leads":687,"revenue":716864,"jobs":277,"opps":254,"cpl":732,"cpo":1980,"cpj":1816,"roi":42.5,"arpl":1043,"arpo":2822,"replace_closed":51,"maint_closed":226},"GLSA HVAC":{"spend":1500,"leads":35,"revenue":166300,"jobs":23,"opps":23,"cpl":43,"cpo":65,"cpj":65,"roi":10986.7,"arpl":4751,"arpo":7230,"replace_closed":13,"maint_closed":10},"GLSA Plumbing":{"spend":4000,"leads":47,"revenue":19160,"jobs":27,"opps":9,"cpl":86,"cpo":444,"cpj":148,"roi":379.0,"arpl":408,"arpo":2129,"replace_closed":4,"maint_closed":23},"Thumbtack":{"spend":28000,"leads":54,"revenue":39080,"jobs":48,"opps":5,"cpl":516,"cpo":5600,"cpj":583,"roi":39.6,"arpl":724,"arpo":7816,"replace_closed":1,"maint_closed":47},"Microsoft Ads":{"spend":5000,"leads":5,"revenue":800,"jobs":2,"opps":2,"cpl":950,"cpo":2500,"cpj":2500,"roi":-84.0,"arpl":160,"arpo":400,"replace_closed":0,"maint_closed":2},"Chiirp":{"spend":2000,"leads":61,"revenue":8000,"jobs":37,"opps":5,"cpl":33,"cpo":400,"cpj":54,"roi":300.0,"arpl":131,"arpo":1600,"replace_closed":5,"maint_closed":32},"Events":{"spend":3000,"leads":11,"revenue":3800,"jobs":11,"opps":3,"cpl":273,"cpo":1000,"cpj":273,"roi":26.7,"arpl":345,"arpo":1267,"replace_closed":3,"maint_closed":8},"PPC Management":{"spend":7340,"leads":0,"revenue":0,"jobs":0,"opps":0,"cpl":0,"cpo":0,"cpj":0,"roi":-100,"arpl":0,"arpo":0,"replace_closed":0,"maint_closed":0}},"organic_channels":{"Legacy Phone / Repeat":{"revenue":315000,"leads":520,"jobs":440,"opps":47,"spend":0},"GBP / Organic Search":{"revenue":70000,"leads":130,"jobs":112,"opps":12,"spend":0},"Email / SMS":{"revenue":35000,"leads":65,"jobs":56,"opps":6,"spend":0},"Power Dialer":{"revenue":60000,"leads":185,"jobs":165,"opps":11,"spend":0},"Referral Program":{"revenue":40000,"leads":45,"jobs":40,"opps":5,"spend":0},"Manager / Elite":{"revenue":40000,"leads":75,"jobs":65,"opps":7,"spend":0}},"totals":{"paid_spend":553840,"paid_revenue":954004,"organic_revenue":560000,"total_revenue":1514004,"mktg_pct":36.6,"total_leads":1920,"total_jobs":1303,"total_opps":389,"gap":-114004}},{"id":"a2","band":"acceptable","name":"CPL Rises to $900","r_close":0.2,"r_ticket":12000,"cpl":900,"paid_campaigns":{"Google Ads":{"spend":611000,"leads":679,"revenue":703472,"jobs":273,"opps":251,"cpl":900,"cpo":2434,"cpj":2238,"roi":15.1,"arpl":1036,"arpo":2803,"replace_closed":50,"maint_closed":223},"GLSA HVAC":{"spend":1500,"leads":35,"revenue":166300,"jobs":23,"opps":23,"cpl":43,"cpo":65,"cpj":65,"roi":10986.7,"arpl":4751,"arpo":7230,"replace_closed":13,"maint_closed":10},"GLSA Plumbing":{"spend":4000,"leads":47,"revenue":19160,"jobs":27,"opps":9,"cpl":86,"cpo":444,"cpj":148,"roi":379.0,"arpl":408,"arpo":2129,"replace_closed":4,"maint_closed":23},"Thumbtack":{"spend":28000,"leads":54,"revenue":39080,"jobs":48,"opps":5,"cpl":516,"cpo":5600,"cpj":583,"roi":39.6,"arpl":724,"arpo":7816,"replace_closed":1,"maint_closed":47},"Microsoft Ads":{"spend":5000,"leads":5,"revenue":800,"jobs":2,"opps":2,"cpl":950,"cpo":2500,"cpj":2500,"roi":-84.0,"arpl":160,"arpo":400,"replace_closed":0,"maint_closed":2},"Chiirp":{"spend":2000,"leads":61,"revenue":8000,"jobs":37,"opps":5,"cpl":33,"cpo":400,"cpj":54,"roi":300.0,"arpl":131,"arpo":1600,"replace_closed":5,"maint_closed":32},"Events":{"spend":3000,"leads":11,"revenue":3800,"jobs":11,"opps":3,"cpl":273,"cpo":1000,"cpj":273,"roi":26.7,"arpl":345,"arpo":1267,"replace_closed":3,"maint_closed":8},"PPC Management":{"spend":7340,"leads":0,"revenue":0,"jobs":0,"opps":0,"cpl":0,"cpo":0,"cpj":0,"roi":-100,"arpl":0,"arpo":0,"replace_closed":0,"maint_closed":0}},"organic_channels":{"Legacy Phone / Repeat":{"revenue":315000,"leads":520,"jobs":440,"opps":47,"spend":0},"GBP / Organic Search":{"revenue":70000,"leads":130,"jobs":112,"opps":12,"spend":0},"Email / SMS":{"revenue":35000,"leads":65,"jobs":56,"opps":6,"spend":0},"Power Dialer":{"revenue":60000,"leads":185,"jobs":165,"opps":11,"spend":0},"Referral Program":{"revenue":40000,"leads":45,"jobs":40,"opps":5,"spend":0},"Manager / Elite":{"revenue":40000,"leads":75,"jobs":65,"opps":7,"spend":0}},"totals":{"paid_spend":661840,"paid_revenue":940612,"organic_revenue":560000,"total_revenue":1500612,"mktg_pct":44.1,"total_leads":1912,"total_jobs":1299,"total_opps":386,"gap":-100612}},{"id":"a3","band":"acceptable","name":"Close Fix Offsets High CPL","r_close":0.25,"r_ticket":12000,"cpl":1000,"paid_campaigns":{"Google Ads":{"spend":562000,"leads":562,"revenue":709840,"jobs":237,"opps":208,"cpl":1000,"cpo":2702,"cpj":2371,"roi":26.3,"arpl":1263,"arpo":3413,"replace_closed":52,"maint_closed":185},"GLSA HVAC":{"spend":1500,"leads":35,"revenue":166300,"jobs":23,"opps":23,"cpl":43,"cpo":65,"cpj":65,"roi":10986.7,"arpl":4751,"arpo":7230,"replace_closed":13,"maint_closed":10},"GLSA Plumbing":{"spend":4000,"leads":47,"revenue":19160,"jobs":27,"opps":9,"cpl":86,"cpo":444,"cpj":148,"roi":379.0,"arpl":408,"arpo":2129,"replace_closed":4,"maint_closed":23},"Thumbtack":{"spend":28000,"leads":54,"revenue":39080,"jobs":48,"opps":5,"cpl":516,"cpo":5600,"cpj":583,"roi":39.6,"arpl":724,"arpo":7816,"replace_closed":1,"maint_closed":47},"Microsoft Ads":{"spend":5000,"leads":5,"revenue":800,"jobs":2,"opps":2,"cpl":950,"cpo":2500,"cpj":2500,"roi":-84.0,"arpl":160,"arpo":400,"replace_closed":0,"maint_closed":2},"Chiirp":{"spend":2000,"leads":61,"revenue":8000,"jobs":37,"opps":5,"cpl":33,"cpo":400,"cpj":54,"roi":300.0,"arpl":131,"arpo":1600,"replace_closed":5,"maint_closed":32},"Events":{"spend":3000,"leads":11,"revenue":3800,"jobs":11,"opps":3,"cpl":273,"cpo":1000,"cpj":273,"roi":26.7,"arpl":345,"arpo":1267,"replace_closed":3,"maint_closed":8},"PPC Management":{"spend":7340,"leads":0,"revenue":0,"jobs":0,"opps":0,"cpl":0,"cpo":0,"cpj":0,"roi":-100,"arpl":0,"arpo":0,"replace_closed":0,"maint_closed":0}},"organic_channels":{"Legacy Phone / Repeat":{"revenue":315000,"leads":520,"jobs":440,"opps":47,"spend":0},"GBP / Organic Search":{"revenue":70000,"leads":130,"jobs":112,"opps":12,"spend":0},"Email / SMS":{"revenue":35000,"leads":65,"jobs":56,"opps":6,"spend":0},"Power Dialer":{"revenue":60000,"leads":185,"jobs":165,"opps":11,"spend":0},"Referral Program":{"revenue":40000,"leads":45,"jobs":40,"opps":5,"spend":0},"Manager / Elite":{"revenue":40000,"leads":75,"jobs":65,"opps":7,"spend":0}},"totals":{"paid_spend":612840,"paid_revenue":946980,"organic_revenue":560000,"total_revenue":1506980,"mktg_pct":40.7,"total_leads":1795,"total_jobs":1263,"total_opps":343,"gap":-106980}},{"id":"g1","band":"aggressive","name":"Outspending PE at $1,200 CPL","r_close":0.2,"r_ticket":12000,"cpl":1200,"paid_campaigns":{"Google Ads":{"spend":815000,"leads":679,"revenue":703472,"jobs":273,"opps":251,"cpl":1200,"cpo":3247,"cpj":2985,"roi":-13.7,"arpl":1036,"arpo":2803,"replace_closed":50,"maint_closed":223},"GLSA HVAC":{"spend":1500,"leads":35,"revenue":166300,"jobs":23,"opps":23,"cpl":43,"cpo":65,"cpj":65,"roi":10986.7,"arpl":4751,"arpo":7230,"replace_closed":13,"maint_closed":10},"GLSA Plumbing":{"spend":4000,"leads":47,"revenue":19160,"jobs":27,"opps":9,"cpl":86,"cpo":444,"cpj":148,"roi":379.0,"arpl":408,"arpo":2129,"replace_closed":4,"maint_closed":23},"Thumbtack":{"spend":28000,"leads":54,"revenue":39080,"jobs":48,"opps":5,"cpl":516,"cpo":5600,"cpj":583,"roi":39.6,"arpl":724,"arpo":7816,"replace_closed":1,"maint_closed":47},"Microsoft Ads":{"spend":5000,"leads":5,"revenue":800,"jobs":2,"opps":2,"cpl":950,"cpo":2500,"cpj":2500,"roi":-84.0,"arpl":160,"arpo":400,"replace_closed":0,"maint_closed":2},"Chiirp":{"spend":2000,"leads":61,"revenue":8000,"jobs":37,"opps":5,"cpl":33,"cpo":400,"cpj":54,"roi":300.0,"arpl":131,"arpo":1600,"replace_closed":5,"maint_closed":32},"Events":{"spend":3000,"leads":11,"revenue":3800,"jobs":11,"opps":3,"cpl":273,"cpo":1000,"cpj":273,"roi":26.7,"arpl":345,"arpo":1267,"replace_closed":3,"maint_closed":8},"PPC Management":{"spend":7340,"leads":0,"revenue":0,"jobs":0,"opps":0,"cpl":0,"cpo":0,"cpj":0,"roi":-100,"arpl":0,"arpo":0,"replace_closed":0,"maint_closed":0}},"organic_channels":{"Legacy Phone / Repeat":{"revenue":315000,"leads":520,"jobs":440,"opps":47,"spend":0},"GBP / Organic Search":{"revenue":70000,"leads":130,"jobs":112,"opps":12,"spend":0},"Email / SMS":{"revenue":35000,"leads":65,"jobs":56,"opps":6,"spend":0},"Power Dialer":{"revenue":60000,"leads":185,"jobs":165,"opps":11,"spend":0},"Referral Program":{"revenue":40000,"leads":45,"jobs":40,"opps":5,"spend":0},"Manager / Elite":{"revenue":40000,"leads":75,"jobs":65,"opps":7,"spend":0}},"totals":{"paid_spend":865840,"paid_revenue":940612,"organic_revenue":560000,"total_revenue":1500612,"mktg_pct":57.7,"total_leads":1912,"total_jobs":1299,"total_opps":386,"gap":-100612}},{"id":"g2","band":"aggressive","name":"Low Close + High CPL","r_close":0.18,"r_ticket":12000,"cpl":1000,"paid_campaigns":{"Google Ads":{"spend":741000,"leads":741,"revenue":701216,"jobs":293,"opps":274,"cpl":1000,"cpo":2704,"cpj":2529,"roi":-5.4,"arpl":946,"arpo":2559,"replace_closed":49,"maint_closed":244},"GLSA HVAC":{"spend":1500,"leads":35,"revenue":166300,"jobs":23,"opps":23,"cpl":43,"cpo":65,"cpj":65,"roi":10986.7,"arpl":4751,"arpo":7230,"replace_closed":13,"maint_closed":10},"GLSA Plumbing":{"spend":4000,"leads":47,"revenue":19160,"jobs":27,"opps":9,"cpl":86,"cpo":444,"cpj":148,"roi":379.0,"arpl":408,"arpo":2129,"replace_closed":4,"maint_closed":23},"Thumbtack":{"spend":28000,"leads":54,"revenue":39080,"jobs":48,"opps":5,"cpl":516,"cpo":5600,"cpj":583,"roi":39.6,"arpl":724,"arpo":7816,"replace_closed":1,"maint_closed":47},"Microsoft Ads":{"spend":5000,"leads":5,"revenue":800,"jobs":2,"opps":2,"cpl":950,"cpo":2500,"cpj":2500,"roi":-84.0,"arpl":160,"arpo":400,"replace_closed":0,"maint_closed":2},"Chiirp":{"spend":2000,"leads":61,"revenue":8000,"jobs":37,"opps":5,"cpl":33,"cpo":400,"cpj":54,"roi":300.0,"arpl":131,"arpo":1600,"replace_closed":5,"maint_closed":32},"Events":{"spend":3000,"leads":11,"revenue":3800,"jobs":11,"opps":3,"cpl":273,"cpo":1000,"cpj":273,"roi":26.7,"arpl":345,"arpo":1267,"replace_closed":3,"maint_closed":8},"PPC Management":{"spend":7340,"leads":0,"revenue":0,"jobs":0,"opps":0,"cpl":0,"cpo":0,"cpj":0,"roi":-100,"arpl":0,"arpo":0,"replace_closed":0,"maint_closed":0}},"organic_channels":{"Legacy Phone / Repeat":{"revenue":315000,"leads":520,"jobs":440,"opps":47,"spend":0},"GBP / Organic Search":{"revenue":70000,"leads":130,"jobs":112,"opps":12,"spend":0},"Email / SMS":{"revenue":35000,"leads":65,"jobs":56,"opps":6,"spend":0},"Power Dialer":{"revenue":60000,"leads":185,"jobs":165,"opps":11,"spend":0},"Referral Program":{"revenue":40000,"leads":45,"jobs":40,"opps":5,"spend":0},"Manager / Elite":{"revenue":40000,"leads":75,"jobs":65,"opps":7,"spend":0}},"totals":{"paid_spend":791840,"paid_revenue":938356,"organic_revenue":560000,"total_revenue":1498356,"mktg_pct":52.8,"total_leads":1974,"total_jobs":1319,"total_opps":409,"gap":-98356}},{"id":"g3","band":"aggressive","name":"25% Close Offsets $1,200 CPL","r_close":0.25,"r_ticket":12000,"cpl":1200,"paid_campaigns":{"Google Ads":{"spend":693000,"leads":578,"revenue":736160,"jobs":244,"opps":214,"cpl":1200,"cpo":3238,"cpj":2840,"roi":6.2,"arpl":1274,"arpo":3440,"replace_closed":54,"maint_closed":190},"GLSA HVAC":{"spend":1500,"leads":35,"revenue":166300,"jobs":23,"opps":23,"cpl":43,"cpo":65,"cpj":65,"roi":10986.7,"arpl":4751,"arpo":7230,"replace_closed":13,"maint_closed":10},"GLSA Plumbing":{"spend":4000,"leads":47,"revenue":19160,"jobs":27,"opps":9,"cpl":86,"cpo":444,"cpj":148,"roi":379.0,"arpl":408,"arpo":2129,"replace_closed":4,"maint_closed":23},"Thumbtack":{"spend":28000,"leads":54,"revenue":39080,"jobs":48,"opps":5,"cpl":516,"cpo":5600,"cpj":583,"roi":39.6,"arpl":724,"arpo":7816,"replace_closed":1,"maint_closed":47},"Microsoft Ads":{"spend":5000,"leads":5,"revenue":800,"jobs":2,"opps":2,"cpl":950,"cpo":2500,"cpj":2500,"roi":-84.0,"arpl":160,"arpo":400,"replace_closed":0,"maint_closed":2},"Chiirp":{"spend":2000,"leads":61,"revenue":8000,"jobs":37,"opps":5,"cpl":33,"cpo":400,"cpj":54,"roi":300.0,"arpl":131,"arpo":1600,"replace_closed":5,"maint_closed":32},"Events":{"spend":3000,"leads":11,"revenue":3800,"jobs":11,"opps":3,"cpl":273,"cpo":1000,"cpj":273,"roi":26.7,"arpl":345,"arpo":1267,"replace_closed":3,"maint_closed":8},"PPC Management":{"spend":7340,"leads":0,"revenue":0,"jobs":0,"opps":0,"cpl":0,"cpo":0,"cpj":0,"roi":-100,"arpl":0,"arpo":0,"replace_closed":0,"maint_closed":0}},"organic_channels":{"Legacy Phone / Repeat":{"revenue":315000,"leads":520,"jobs":440,"opps":47,"spend":0},"GBP / Organic Search":{"revenue":70000,"leads":130,"jobs":112,"opps":12,"spend":0},"Email / SMS":{"revenue":35000,"leads":65,"jobs":56,"opps":6,"spend":0},"Power Dialer":{"revenue":60000,"leads":185,"jobs":165,"opps":11,"spend":0},"Referral Program":{"revenue":40000,"leads":45,"jobs":40,"opps":5,"spend":0},"Manager / Elite":{"revenue":40000,"leads":75,"jobs":65,"opps":7,"spend":0}},"totals":{"paid_spend":743840,"paid_revenue":973300,"organic_revenue":560000,"total_revenue":1533300,"mktg_pct":48.5,"total_leads":1811,"total_jobs":1270,"total_opps":349,"gap":-133300}},{"id":"c1","band":"costly","name":"PE Playbook \u2014 Buy the Market","r_close":0.2,"r_ticket":10000,"cpl":1200,"paid_campaigns":{"Google Ads":{"spend":948000,"leads":790,"revenue":700640,"jobs":318,"opps":292,"cpl":1200,"cpo":3247,"cpj":2981,"roi":-26.1,"arpl":887,"arpo":2399,"replace_closed":58,"maint_closed":260},"GLSA HVAC":{"spend":1500,"leads":35,"revenue":166300,"jobs":23,"opps":23,"cpl":43,"cpo":65,"cpj":65,"roi":10986.7,"arpl":4751,"arpo":7230,"replace_closed":13,"maint_closed":10},"GLSA Plumbing":{"spend":4000,"leads":47,"revenue":19160,"jobs":27,"opps":9,"cpl":86,"cpo":444,"cpj":148,"roi":379.0,"arpl":408,"arpo":2129,"replace_closed":4,"maint_closed":23},"Thumbtack":{"spend":28000,"leads":54,"revenue":39080,"jobs":48,"opps":5,"cpl":516,"cpo":5600,"cpj":583,"roi":39.6,"arpl":724,"arpo":7816,"replace_closed":1,"maint_closed":47},"Microsoft Ads":{"spend":5000,"leads":5,"revenue":800,"jobs":2,"opps":2,"cpl":950,"cpo":2500,"cpj":2500,"roi":-84.0,"arpl":160,"arpo":400,"replace_closed":0,"maint_closed":2},"Chiirp":{"spend":2000,"leads":61,"revenue":8000,"jobs":37,"opps":5,"cpl":33,"cpo":400,"cpj":54,"roi":300.0,"arpl":131,"arpo":1600,"replace_closed":5,"maint_closed":32},"Events":{"spend":3000,"leads":11,"revenue":3800,"jobs":11,"opps":3,"cpl":273,"cpo":1000,"cpj":273,"roi":26.7,"arpl":345,"arpo":1267,"replace_closed":3,"maint_closed":8},"PPC Management":{"spend":7340,"leads":0,"revenue":0,"jobs":0,"opps":0,"cpl":0,"cpo":0,"cpj":0,"roi":-100,"arpl":0,"arpo":0,"replace_closed":0,"maint_closed":0}},"organic_channels":{"Legacy Phone / Repeat":{"revenue":315000,"leads":520,"jobs":440,"opps":47,"spend":0},"GBP / Organic Search":{"revenue":70000,"leads":130,"jobs":112,"opps":12,"spend":0},"Email / SMS":{"revenue":35000,"leads":65,"jobs":56,"opps":6,"spend":0},"Power Dialer":{"revenue":60000,"leads":185,"jobs":165,"opps":11,"spend":0},"Referral Program":{"revenue":40000,"leads":45,"jobs":40,"opps":5,"spend":0},"Manager / Elite":{"revenue":40000,"leads":75,"jobs":65,"opps":7,"spend":0}},"totals":{"paid_spend":998840,"paid_revenue":937780,"organic_revenue":560000,"total_revenue":1497780,"mktg_pct":66.7,"total_leads":2023,"total_jobs":1344,"total_opps":427,"gap":-97780}},{"id":"c2","band":"costly","name":"Low Close + Expensive Leads","r_close":0.15,"r_ticket":12000,"cpl":1200,"paid_campaigns":{"Google Ads":{"spend":1031000,"leads":859,"revenue":706848,"jobs":330,"opps":318,"cpl":1200,"cpo":3242,"cpj":3124,"roi":-31.4,"arpl":823,"arpo":2223,"replace_closed":48,"maint_closed":282},"GLSA HVAC":{"spend":1500,"leads":35,"revenue":166300,"jobs":23,"opps":23,"cpl":43,"cpo":65,"cpj":65,"roi":10986.7,"arpl":4751,"arpo":7230,"replace_closed":13,"maint_closed":10},"GLSA Plumbing":{"spend":4000,"leads":47,"revenue":19160,"jobs":27,"opps":9,"cpl":86,"cpo":444,"cpj":148,"roi":379.0,"arpl":408,"arpo":2129,"replace_closed":4,"maint_closed":23},"Thumbtack":{"spend":28000,"leads":54,"revenue":39080,"jobs":48,"opps":5,"cpl":516,"cpo":5600,"cpj":583,"roi":39.6,"arpl":724,"arpo":7816,"replace_closed":1,"maint_closed":47},"Microsoft Ads":{"spend":5000,"leads":5,"revenue":800,"jobs":2,"opps":2,"cpl":950,"cpo":2500,"cpj":2500,"roi":-84.0,"arpl":160,"arpo":400,"replace_closed":0,"maint_closed":2},"Chiirp":{"spend":2000,"leads":61,"revenue":8000,"jobs":37,"opps":5,"cpl":33,"cpo":400,"cpj":54,"roi":300.0,"arpl":131,"arpo":1600,"replace_closed":5,"maint_closed":32},"Events":{"spend":3000,"leads":11,"revenue":3800,"jobs":11,"opps":3,"cpl":273,"cpo":1000,"cpj":273,"roi":26.7,"arpl":345,"arpo":1267,"replace_closed":3,"maint_closed":8},"PPC Management":{"spend":7340,"leads":0,"revenue":0,"jobs":0,"opps":0,"cpl":0,"cpo":0,"cpj":0,"roi":-100,"arpl":0,"arpo":0,"replace_closed":0,"maint_closed":0}},"organic_channels":{"Legacy Phone / Repeat":{"revenue":315000,"leads":520,"jobs":440,"opps":47,"spend":0},"GBP / Organic Search":{"revenue":70000,"leads":130,"jobs":112,"opps":12,"spend":0},"Email / SMS":{"revenue":35000,"leads":65,"jobs":56,"opps":6,"spend":0},"Power Dialer":{"revenue":60000,"leads":185,"jobs":165,"opps":11,"spend":0},"Referral Program":{"revenue":40000,"leads":45,"jobs":40,"opps":5,"spend":0},"Manager / Elite":{"revenue":40000,"leads":75,"jobs":65,"opps":7,"spend":0}},"totals":{"paid_spend":1081840,"paid_revenue":943988,"organic_revenue":560000,"total_revenue":1503988,"mktg_pct":71.9,"total_leads":2092,"total_jobs":1356,"total_opps":453,"gap":-103988}},{"id":"c3","band":"costly","name":"$1.4M Spend = $1.4M Revenue","r_close":0.15,"r_ticket":8000,"cpl":1200,"paid_campaigns":{"Google Ads":{"spend":1200000,"leads":1000,"revenue":600656,"jobs":385,"opps":370,"cpl":1200,"cpo":3243,"cpj":3117,"roi":-49.9,"arpl":601,"arpo":1623,"replace_closed":56,"maint_closed":329},"GLSA HVAC":{"spend":1500,"leads":35,"revenue":166300,"jobs":23,"opps":23,"cpl":43,"cpo":65,"cpj":65,"roi":10986.7,"arpl":4751,"arpo":7230,"replace_closed":13,"maint_closed":10},"GLSA Plumbing":{"spend":4000,"leads":47,"revenue":19160,"jobs":27,"opps":9,"cpl":86,"cpo":444,"cpj":148,"roi":379.0,"arpl":408,"arpo":2129,"replace_closed":4,"maint_closed":23},"Thumbtack":{"spend":28000,"leads":54,"revenue":39080,"jobs":48,"opps":5,"cpl":516,"cpo":5600,"cpj":583,"roi":39.6,"arpl":724,"arpo":7816,"replace_closed":1,"maint_closed":47},"Microsoft Ads":{"spend":5000,"leads":5,"revenue":800,"jobs":2,"opps":2,"cpl":950,"cpo":2500,"cpj":2500,"roi":-84.0,"arpl":160,"arpo":400,"replace_closed":0,"maint_closed":2},"Chiirp":{"spend":2000,"leads":61,"revenue":8000,"jobs":37,"opps":5,"cpl":33,"cpo":400,"cpj":54,"roi":300.0,"arpl":131,"arpo":1600,"replace_closed":5,"maint_closed":32},"Events":{"spend":3000,"leads":11,"revenue":3800,"jobs":11,"opps":3,"cpl":273,"cpo":1000,"cpj":273,"roi":26.7,"arpl":345,"arpo":1267,"replace_closed":3,"maint_closed":8},"PPC Management":{"spend":7340,"leads":0,"revenue":0,"jobs":0,"opps":0,"cpl":0,"cpo":0,"cpj":0,"roi":-100,"arpl":0,"arpo":0,"replace_closed":0,"maint_closed":0}},"organic_channels":{"Legacy Phone / Repeat":{"revenue":315000,"leads":520,"jobs":440,"opps":47,"spend":0},"GBP / Organic Search":{"revenue":70000,"leads":130,"jobs":112,"opps":12,"spend":0},"Email / SMS":{"revenue":35000,"leads":65,"jobs":56,"opps":6,"spend":0},"Power Dialer":{"revenue":60000,"leads":185,"jobs":165,"opps":11,"spend":0},"Referral Program":{"revenue":40000,"leads":45,"jobs":40,"opps":5,"spend":0},"Manager / Elite":{"revenue":40000,"leads":75,"jobs":65,"opps":7,"spend":0}},"totals":{"paid_spend":1250840,"paid_revenue":837796,"organic_revenue":560000,"total_revenue":1397796,"mktg_pct":89.5,"total_leads":2233,"total_jobs":1411,"total_opps":505,"gap":2204}}];
+
+const BAND_COLORS = {elite:'#4ade80',excellent:'#60a5fa',healthy:'#34d399',acceptable:'#fbbf24',aggressive:'#f97316',costly:'#f87171'};
+const BAND_LABELS = {elite:'Elite ≤21%',excellent:'Excellent 21–30%',healthy:'Healthy 29–36%',acceptable:'Acceptable 36–45%',aggressive:'Aggressive 48–58%',costly:'Burning Cash 67%+'};
+const BAND_DESC = {elite:'Sales + ops + PPC all firing',excellent:'Close rate fixed + in-house CPL',healthy:'One or two levers pulled',acceptable:'No lever changes — spending more',aggressive:'Buying revenue — unsustainable',costly:'PE-only territory'};
+
+const $ = s => document.querySelector(s);
+const fmt = n => n === 0 ? '—' : '$'+n.toLocaleString();
+const fmtPct = n => n > 0 ? '+'+n.toFixed(1)+'%' : n.toFixed(1)+'%';
+const roiCls = r => r > 50 ? 'roi-pos' : r > 0 ? 'roi-marg' : r === -100 ? 'roi-na' : 'roi-neg';
+
+function roiStr(r) {
+  if (r === -100) return '—';
+  if (r > 999) return '10k%+';
+  return fmtPct(r);
+}
+
+function campaignTag(name) {
+  if (name.includes('GLSA')) return '<span class="tag tag-lsa">LSA</span>';
+  if (name.includes('PPC Mgmt') || name === 'PPC Management') return '<span class="tag tag-fixed">Fixed</span>';
+  if (name === 'Chiirp') return '<span class="tag tag-sms">SMS</span>';
+  return '';
+}
+
+function buildDetail(s) {
+  const t = s.totals;
+  const color = BAND_COLORS[s.band];
+
+  // paid campaigns table
+  let paidRows = '';
+  let pTotal = {spend:0,leads:0,jobs:0,opps:0,revenue:0};
+  for (const [name, c] of Object.entries(s.paid_campaigns)) {
+    pTotal.spend += c.spend; pTotal.leads += c.leads; pTotal.jobs += c.jobs;
+    pTotal.opps += c.opps; pTotal.revenue += c.revenue;
+    const isFixed = name === 'PPC Management';
+    const rc = roiCls(c.roi);
+    paidRows += `<tr>
+      <td>${name}${campaignTag(name)}</td>
+      <td>${fmt(c.spend)}</td>
+      <td>${c.leads||'—'}</td>
+      <td>${c.jobs||'—'}</td>
+      <td>${c.opps||'—'}</td>
+      <td>${fmt(c.revenue)}</td>
+      <td>${c.cpl ? fmt(c.cpl) : '—'}</td>
+      <td>${c.cpo ? fmt(c.cpo) : '—'}</td>
+      <td>${c.cpj ? fmt(c.cpj) : '—'}</td>
+      <td class="${rc}">${roiStr(c.roi)}</td>
+      <td>${c.arpl ? fmt(c.arpl) : '—'}</td>
+      <td>${c.arpo ? fmt(c.arpo) : '—'}</td>
+    </tr>`;
+  }
+  paidRows += `<tr class="subtotal">
+    <td>Paid Total</td>
+    <td style="color:${color}">${fmt(pTotal.spend)}</td>
+    <td>${pTotal.leads}</td><td>${pTotal.jobs}</td><td>${pTotal.opps}</td>
+    <td style="color:${color}">${fmt(pTotal.revenue)}</td>
+    <td colspan="6"></td>
+  </tr>`;
+
+  // organic table
+  let orgRows = '';
+  let oTotal = {leads:0,jobs:0,opps:0,revenue:0};
+  for (const [name, o] of Object.entries(s.organic_channels)) {
+    oTotal.leads += o.leads; oTotal.jobs += o.jobs; oTotal.opps += o.opps; oTotal.revenue += o.revenue;
+    const arpl = o.leads ? Math.round(o.revenue/o.leads) : 0;
+    const arpo = o.opps ? Math.round(o.revenue/o.opps) : 0;
+    orgRows += `<tr class="organic-row">
+      <td>${name}<span class="tag tag-organic">Organic</span></td>
+      <td>$0</td>
+      <td>${o.leads}</td><td>${o.jobs}</td><td>${o.opps}</td>
+      <td>${fmt(o.revenue)}</td>
+      <td>—</td><td>—</td><td>—</td>
+      <td class="roi-pos">∞</td>
+      <td>${arpl ? fmt(arpl) : '—'}</td>
+      <td>${arpo ? fmt(arpo) : '—'}</td>
+    </tr>`;
+  }
+  orgRows += `<tr class="subtotal">
+    <td>Organic Total</td>
+    <td>$0</td>
+    <td>${oTotal.leads}</td><td>${oTotal.jobs}</td><td>${oTotal.opps}</td>
+    <td class="roi-pos">${fmt(oTotal.revenue)}</td>
+    <td colspan="6"></td>
+  </tr>`;
+
+  const grandRoi = ((t.total_revenue - t.paid_spend) / t.paid_spend * 100).toFixed(1);
+
+  return `<div class="detail-inner">
+    <div class="mix-row">
+      <div class="mix-card"><div class="mix-card-label">Replace Close Rate</div><div class="mix-card-value" style="color:${color}">${(s.r_close*100).toFixed(0)}%</div><div class="mix-card-sub">on system replacement estimates</div></div>
+      <div class="mix-card"><div class="mix-card-label">Avg Replace Ticket</div><div class="mix-card-value" style="color:${color}">${fmt(s.r_ticket)}</div><div class="mix-card-sub">installed system value</div></div>
+      <div class="mix-card"><div class="mix-card-label">Google CPL</div><div class="mix-card-value" style="color:${color}">$${s.cpl}</div><div class="mix-card-sub">cost per lead on Google Ads</div></div>
+      <div class="mix-card"><div class="mix-card-label">Total Revenue</div><div class="mix-card-value" style="color:${color}">${fmt(t.total_revenue)}</div><div class="mix-card-sub">paid + organic</div></div>
+      <div class="mix-card"><div class="mix-card-label">Mktg % of Revenue</div><div class="mix-card-value" style="color:${color}">${t.mktg_pct}%</div><div class="mix-card-sub">paid spend / total revenue</div></div>
+      <div class="mix-card"><div class="mix-card-label">Total Jobs / Month</div><div class="mix-card-value">${t.total_jobs}</div><div class="mix-card-sub">all channels combined</div></div>
+    </div>
+
+    <div class="detail-section-title">Paid Channels</div>
+    <table class="camp">
+      <thead><tr>
+        <th style="text-align:left">Campaign</th><th>Spend</th><th>Leads</th><th>Jobs</th><th>Replace Opps</th>
+        <th>Revenue</th><th>CPL</th><th>CPO</th><th>CPJ</th><th>ROI</th><th>ARPL</th><th>ARPO</th>
+      </tr></thead>
+      <tbody>${paidRows}</tbody>
+    </table>
+
+    <div class="detail-section-title" style="margin-top:16px">Organic Channels (Zero Spend)</div>
+    <table class="camp">
+      <thead><tr>
+        <th style="text-align:left">Channel</th><th>Spend</th><th>Leads</th><th>Jobs</th><th>Replace Opps</th>
+        <th>Revenue</th><th>CPL</th><th>CPO</th><th>CPJ</th><th>ROI</th><th>ARPL</th><th>ARPO</th>
+      </tr></thead>
+      <tbody>${orgRows}</tbody>
+    </table>
+
+    <table class="camp" style="margin-top:2px">
+      <tbody>
+        <tr class="grand">
+          <td>GRAND TOTAL</td>
+          <td style="color:${color}">${fmt(t.paid_spend)}</td>
+          <td>${t.total_leads}</td><td>${t.total_jobs}</td><td>${t.total_opps}</td>
+          <td style="color:${color};font-size:13px">${fmt(t.total_revenue)}</td>
+          <td colspan="4" style="color:${color};text-align:right">Mktg %: ${t.mktg_pct}%</td>
+          <td colspan="2"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>`;
+}
+
+function buildLevers(s) {
+  const tags = [];
+  if (s.r_close > 0.20) tags.push(`<span class="ct ct-close">close ↑ ${(s.r_close*100).toFixed(0)}%</span>`);
+  else if (s.r_close < 0.20) tags.push(`<span class="ct ct-bad">close ↓ ${(s.r_close*100).toFixed(0)}%</span>`);
+  if (s.r_ticket > 12000) tags.push(`<span class="ct ct-ticket">ticket ↑ $${(s.r_ticket/1000).toFixed(0)}k</span>`);
+  else if (s.r_ticket < 12000) tags.push(`<span class="ct ct-bad">ticket ↓ $${(s.r_ticket/1000).toFixed(0)}k</span>`);
+  if (s.cpl < 732) tags.push(`<span class="ct ct-cpl">CPL ↓ $${s.cpl}</span>`);
+  else if (s.cpl > 732) tags.push(`<span class="ct ct-bad">CPL ↑ $${s.cpl}</span>`);
+  return tags.join('');
+}
+
+function render() {
+  const app = document.getElementById('app');
+  const bands = ['elite','excellent','healthy','acceptable','aggressive','costly'];
+  let html = '';
+
+  for (const band of bands) {
+    const scenarios = DATA.filter(s => s.band === band);
+    if (!scenarios.length) continue;
+    const color = BAND_COLORS[band];
+    html += `
+      <div class="sl">${BAND_LABELS[band]}</div>
+      <div class="band-header b-${band}">
+        <div class="band-title c-${band}">${band.charAt(0).toUpperCase()+band.slice(1)}</div>
+        <div class="band-range">${BAND_DESC[band]}</div>
+        <div class="band-pill" style="background:${color}18;color:${color}">${scenarios.length} scenarios</div>
+      </div>
+      <div class="col-headers">
+        <div class="col-h">Scenario</div>
+        <div class="col-h">Close%</div>
+        <div class="col-h">Avg Ticket</div>
+        <div class="col-h">GA Spend</div>
+        <div class="col-h">GA CPL</div>
+        <div class="col-h">Total Spend</div>
+        <div class="col-h">Total Revenue</div>
+        <div class="col-h">Mktg %</div>
+      </div>`;
+
+    for (const s of scenarios) {
+      const t = s.totals;
+      const color2 = BAND_COLORS[s.band];
+      const gaSpend = s.paid_campaigns['Google Ads'].spend;
+      html += `
+        <div class="scenario-wrap">
+          <div class="scenario b-${band}" id="row-${s.id}" onclick="toggle('${s.id}')">
+            <div>
+              <div class="sc-name">▶ ${s.name}</div>
+              <div class="changes">${buildLevers(s)}</div>
+            </div>
+            <div class="sc-cell key c-${band}">${(s.r_close*100).toFixed(0)}%</div>
+            <div class="sc-cell key c-${band}">$${(s.r_ticket/1000).toFixed(0)}k</div>
+            <div class="sc-cell">${fmt(gaSpend)}</div>
+            <div class="sc-cell">$${s.cpl}</div>
+            <div class="sc-cell">${fmt(t.paid_spend)}</div>
+            <div class="sc-cell">${fmt(t.total_revenue)}</div>
+            <div class="mktg-cell c-${band}">${t.mktg_pct}%</div>
+          </div>
+          <div class="detail b-${band}" id="detail-${s.id}">
+            ${buildDetail(s)}
+          </div>
+        </div>`;
+    }
+  }
+
+  app.innerHTML = html;
+}
+
+function toggle(id) {
+  const row = document.getElementById('row-'+id);
+  const detail = document.getElementById('detail-'+id);
+  const isOpen = detail.classList.contains('open');
+  detail.classList.toggle('open', !isOpen);
+  row.classList.toggle('open', !isOpen);
+  // update arrow
+  const name = row.querySelector('.sc-name');
+  name.textContent = name.textContent.replace(/^[▶▼] /, (!isOpen ? '▼ ' : '▶ '));
+}
+
+render();
+</script>
+</body>
+</html>
